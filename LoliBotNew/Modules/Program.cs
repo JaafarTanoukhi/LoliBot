@@ -30,7 +30,7 @@ namespace LoliBotNew
 
             services = new ServiceCollection().AddSingleton(client).AddSingleton(commands).BuildServiceProvider();
 
-            string token = "OTAwNzU1MTY3MTExMTUxNzI3.YXF7nw.MO7pfvGA_Pm-MBoY605q7qaVTi4";
+            string token = "SECRET TOKEN HERE";
 
             client.Log += client_Log;
 
