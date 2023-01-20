@@ -11,12 +11,12 @@ namespace LoliBotNew.Data
 {
     public static class JsonMaster
     {
-        private const string jsonPath = "E:\\vs\\LoliBotNew\\LoliBotNew\\Data\\Users.Json";
+        private const string jsonPath = "Users.Json";
         private static List<User> AllUsers;
 
         static JsonMaster()
         {
-           
+          if(!File.Exists(jsonPath)) File.Create(jsonPath);
             AllUsers = ReadUserDataFromFile();
             StartWriteTimer();
         }
@@ -25,11 +25,14 @@ namespace LoliBotNew.Data
             
             List<User> Result;
             //no need for try clause, application should fail if something is wrong with the json path...
-            StreamReader str=new StreamReader(jsonPath);
+             StreamReader str=new StreamReader(jsonPath);
+          
+       
             string JsonString = str.ReadToEnd();
             str.Close();
             if (JsonString == "") return new List<User>();
             Result=JsonSerializer.Deserialize<List<User>>(JsonString);
+          if(Result==null) return new List<User>();
 
             return Result;
         }

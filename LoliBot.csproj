@@ -2,8 +2,7 @@
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
-    <TargetFramework>netcoreapp3.1</TargetFramework>
-	  <Optimize>false</Optimize>
+    <TargetFramework>netcoreapp6.0.0</TargetFramework>
   </PropertyGroup>
 
   <ItemGroup>

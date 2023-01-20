@@ -8,7 +8,7 @@ namespace LoliBotNew.Data
     public static class Shop
     {
         private static List<ShopItem> itemList = new List<ShopItem>();
-        private static string filepath = @"..\Data\Shop.txt";
+        private static string filepath = "Shop.txt";
 
         static Shop()
         {
@@ -25,7 +25,7 @@ namespace LoliBotNew.Data
 
         private static void ReadFromFile()
         {
-            if (!File.Exists(filepath)) return;
+            if (!File.Exists(filepath)) File.Create(filepath);
 
             try
             {
@@ -40,7 +40,7 @@ namespace LoliBotNew.Data
             }
             catch (Exception e)
             {
-                throw e;
+                Console.WriteLine(e.Message);
             }
         }
 

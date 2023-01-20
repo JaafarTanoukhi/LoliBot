@@ -7,21 +7,22 @@ using Discord.WebSocket;
 using Discord.Commands;
 using Discord;
 using LoliBotNew.Data;
-using LoliBotNew.Modules;
 
-namespace LoliBotNew
+namespace LoliBotNew.Modules
 {
     public class Commands : ModuleBase<SocketCommandContext>
     {
         Random rand = new Random();
-        
-        
-
-
         [Command("Loli")]
         public async Task loli()
         {
-            User user = JsonMaster.GetUser(Context.User.Id);
+          User user=null;
+          try{
+             user = JsonMaster.GetUser(Context.User.Id);
+            }
+          catch(Exception e){
+            Console.WriteLine(e.Message);
+          }
             if (user!=null  &&  user.isOwner)
             {
                 await Context.Channel.SendMessageAsync("You already have a loli");
@@ -463,7 +464,7 @@ namespace LoliBotNew
         {
             string message = "";
 
-            for (int i = 0; i <= Shop.Count() - 1; i++)
+            for (int i = 0; i < Shop.Count(); i++)
             {
                 var item = Shop.getItem(i);
                 message += $"{item.ItemId}. {item.ItemName} Price: {item.ItemPrice}${Environment.NewLine}";

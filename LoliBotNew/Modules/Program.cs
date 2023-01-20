@@ -9,7 +9,7 @@ using Discord.Commands;
 using Discord.WebSocket;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace LoliBotNew
+namespace LoliBotNew.Modules
 {
     class Program
     {
@@ -19,6 +19,7 @@ namespace LoliBotNew
 
         static void Main(string[] args)
         {
+          HTTPGenerator.Start();
             new Program().RunBotAsync().GetAwaiter().GetResult();
 
         }
@@ -30,7 +31,7 @@ namespace LoliBotNew
 
             services = new ServiceCollection().AddSingleton(client).AddSingleton(commands).BuildServiceProvider();
 
-            string token = "SECRET TOKEN HERE";
+            string token = "OTAwNzU1MTY3MTExMTUxNzI3.G9XP_T.LMYIl5nCq_ShZwsoA3s7HCOg8K0l_tFYGT3Dgw";
 
             client.Log += client_Log;
 
